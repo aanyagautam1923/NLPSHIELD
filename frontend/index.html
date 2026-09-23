@@ -1,0 +1,771 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NLPShield | AI Text Security</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="logo">
+        🛡️ NLP<span>Shield</span>
+    </div>
+
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="#analyze">
+            Analyze
+        </a>
+
+        <a href="/dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="/history.html">
+            History
+        </a>
+
+        <a href="/knowledge.html">
+            Knowledge
+        </a>
+
+        <a href="/about.html">
+            About
+        </a>
+
+    </nav>
+
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        AI System Online
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- HERO -->
+
+<section
+    id="home"
+    class="hero"
+>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🛡️ AI-Powered Text Security
+        </div>
+
+
+        <h1>
+
+            Analyze Text.
+
+            <br>
+
+            <span>
+                Detect Threats.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            NLPShield uses Natural Language Processing
+            and Machine Learning to detect toxic content,
+            phishing, scams, credential theft and
+            suspicious cyber-threat patterns.
+
+        </p>
+
+
+        <a
+            href="#analyze"
+            class="primary-btn"
+        >
+            Start Analysis →
+        </a>
+
+    </div>
+
+
+
+    <div class="hero-card">
+
+        <div class="shield-circle">
+            🛡️
+        </div>
+
+
+        <h3>
+            Real-Time Protection
+        </h3>
+
+
+        <p>
+
+            Analyze suspicious messages before
+            interacting with them.
+
+        </p>
+
+
+        <div class="mini-stats">
+
+            <div>
+
+                <strong>
+                    ML
+                </strong>
+
+                <span>
+                    Detection
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    RAG
+                </strong>
+
+                <span>
+                    Guidance
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    AI
+                </strong>
+
+                <span>
+                    Explanation
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ANALYZER -->
+
+<section
+    id="analyze"
+    class="analyzer-section"
+>
+
+
+    <div class="section-heading">
+
+        <span class="small-title">
+            TEXT ANALYZER
+        </span>
+
+
+        <h2>
+            Check a Message for Threats
+        </h2>
+
+
+        <p>
+            Enter any message, email or suspicious
+            text below.
+        </p>
+
+    </div>
+
+
+
+    <div class="analyzer">
+
+
+        <!-- INPUT -->
+
+        <div class="input-panel">
+
+            <label>
+                Message to Analyze
+            </label>
+
+
+            <textarea
+                id="textInput"
+                maxlength="5000"
+                placeholder="Example: Your account will be blocked. Verify your password immediately..."
+            ></textarea>
+
+
+            <div class="input-bottom">
+
+                <span id="charCount">
+                    0 / 5000
+                </span>
+
+
+                <div class="button-group">
+
+                    <button
+                        id="clearBtn"
+                        class="secondary-btn"
+                    >
+                        Clear
+                    </button>
+
+
+                    <button
+                        id="analyzeBtn"
+                        class="primary-btn"
+                    >
+                        🔍 Analyze Text
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RESULT -->
+
+        <div
+            class="result-panel"
+            id="resultPanel"
+        >
+
+
+            <div class="result-header">
+
+                <div>
+
+                    <span class="small-title">
+                        ANALYSIS RESULT
+                    </span>
+
+
+                    <h3 id="resultTitle">
+                        Ready to Analyze
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="riskBadge"
+                    class="risk-badge neutral"
+                >
+                    WAITING
+                </div>
+
+            </div>
+
+
+
+            <!-- RESULT CARDS -->
+
+            <div class="result-grid">
+
+
+                <div class="result-card">
+
+                    <span>
+                        ☣️
+                    </span>
+
+                    <p>
+                        Toxicity
+                    </p>
+
+                    <strong id="toxicityResult">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <div class="result-card">
+
+                    <span>
+                        ⚠️
+                    </span>
+
+                    <p>
+                        Cyber Threat
+                    </p>
+
+                    <strong id="threatResult">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <div class="result-card">
+
+                    <span>
+                        🎯
+                    </span>
+
+                    <p>
+                        Confidence
+                    </p>
+
+                    <strong id="confidenceResult">
+                        —
+                    </strong>
+
+                </div>
+
+
+
+                <div class="result-card">
+
+                    <span>
+                        🏷️
+                    </span>
+
+                    <p>
+                        Category
+                    </p>
+
+                    <strong id="categoryResult">
+                        —
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- CONFIDENCE -->
+
+            <div class="confidence-section">
+
+                <div class="confidence-row">
+
+                    <div>
+
+                        <span>
+                            Toxicity Confidence
+                        </span>
+
+                    </div>
+
+                    <strong id="toxicityConfidence">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        id="toxicityBar"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+
+
+                <div class="confidence-row">
+
+                    <div>
+
+                        <span>
+                            Threat Confidence
+                        </span>
+
+                    </div>
+
+                    <strong id="threatConfidence">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress">
+
+                    <div
+                        id="threatBar"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RISK -->
+
+            <div class="risk-score">
+
+                <div>
+
+                    <span>
+                        Overall Risk
+                    </span>
+
+                    <strong id="riskText">
+                        WAITING
+                    </strong>
+
+                </div>
+
+
+                <div
+                    id="riskCircle"
+                    class="risk-circle"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+
+            <!-- AI EXPLANATION -->
+
+            <div class="explanation">
+
+                <h4>
+                    🤖 AI Explanation
+                </h4>
+
+
+                <p id="explanation">
+
+                    Enter text above to receive
+                    an AI-powered security analysis.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- RAG SOURCES -->
+
+            <div
+                id="ragSection"
+                class="rag-section"
+            >
+
+                <h4>
+                    📚 Retrieved Security Knowledge
+                </h4>
+
+
+                <div id="ragSources">
+
+                    <p class="muted">
+                        No sources retrieved yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- DASHBOARD -->
+
+<section
+    id="dashboard"
+    class="dashboard-section"
+>
+
+
+    <div class="section-heading">
+
+        <span class="small-title">
+            SECURITY DASHBOARD
+        </span>
+
+
+        <h2>
+            Analysis Overview
+        </h2>
+
+
+        <p>
+            Live statistics from NLPShield.
+        </p>
+
+    </div>
+
+
+
+    <div class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <div>
+
+                <span>
+                    Total Analyses
+                </span>
+
+                <strong id="totalAnalyzed">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⚠️
+            </div>
+
+            <div>
+
+                <span>
+                    Threats Detected
+                </span>
+
+                <strong id="threatsDetected">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ☣️
+            </div>
+
+            <div>
+
+                <span>
+                    Toxic Messages
+                </span>
+
+                <strong id="toxicMessages">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🚨
+            </div>
+
+            <div>
+
+                <span>
+                    High Risk
+                </span>
+
+                <strong id="highRisk">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- SECURITY -->
+
+<section
+    id="security"
+    class="tips-section"
+>
+
+
+    <div class="section-heading">
+
+        <span class="small-title">
+            SECURITY KNOWLEDGE
+        </span>
+
+
+        <h2>
+            Stay Safe Online
+        </h2>
+
+
+        <p>
+            Defensive cybersecurity practices.
+        </p>
+
+    </div>
+
+
+
+    <div class="tips">
+
+
+        <div class="tip">
+
+            <span>
+                🔐
+            </span>
+
+            <h3>
+                Never Share Passwords
+            </h3>
+
+            <p>
+                Never share passwords or OTPs through
+                unexpected messages.
+            </p>
+
+        </div>
+
+
+
+        <div class="tip">
+
+            <span>
+                🎣
+            </span>
+
+            <h3>
+                Watch for Phishing
+            </h3>
+
+            <p>
+                Be careful with urgent messages asking
+                you to click links or verify information.
+            </p>
+
+        </div>
+
+
+
+        <div class="tip">
+
+            <span>
+                🔎
+            </span>
+
+            <h3>
+                Verify the Source
+            </h3>
+
+            <p>
+                Verify suspicious requests through
+                trusted communication channels.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+
+    <div class="logo">
+        🛡️ NLP<span>Shield</span>
+    </div>
+
+
+    <p>
+        AI/NLP Cyber Threat & Toxicity Analyzer
+    </p>
+
+
+    <span>
+        © 2026 NLPShield
+    </span>
+
+</footer>
+
+
+
+<script src="/js/script.js"></script>
+
+</body>
+
+</html>

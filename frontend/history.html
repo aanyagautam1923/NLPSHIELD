@@ -1,0 +1,542 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NLPShield | Analysis History</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #080b12;
+            color: #f4f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            background: #0d111a;
+            border-right: 1px solid #202938;
+            padding: 24px 16px;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        .nav-title {
+            color: #687386;
+            font-size: 11px;
+            margin: 20px 12px 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 14px;
+            margin: 5px 0;
+            border-radius: 10px;
+            color: #aeb8c8;
+            text-decoration: none;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #13202d;
+            color: #00e5ff;
+        }
+
+        .main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .header p {
+            color: #7f8a9d;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search {
+            flex: 1;
+            max-width: 500px;
+            padding: 13px 16px;
+            border-radius: 10px;
+            border: 1px solid #293344;
+            background: #10151f;
+            color: white;
+            outline: none;
+        }
+
+        .search:focus {
+            border-color: #00e5ff;
+        }
+
+        .analyze-btn {
+            padding: 13px 20px;
+            background: #00e5ff;
+            color: #061018;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .table-card {
+            background: #10151f;
+            border: 1px solid #202938;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        th {
+            text-align: left;
+            padding: 16px;
+            color: #7f8a9d;
+            font-size: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #202938;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #1b2330;
+            font-size: 13px;
+        }
+
+        tr:hover {
+            background: #131a25;
+        }
+
+        .text-cell {
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .low {
+            background: #123229;
+            color: #53e6b0;
+        }
+
+        .medium {
+            background: #352c14;
+            color: #ffc857;
+        }
+
+        .high {
+            background: #35151d;
+            color: #ff667d;
+        }
+
+        .safe {
+            color: #53e6b0;
+        }
+
+        .danger {
+            color: #ff667d;
+        }
+
+        .empty {
+            padding: 50px;
+            text-align: center;
+            color: #7f8a9d;
+        }
+
+        @media(max-width: 700px) {
+
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+
+            .logo {
+                font-size: 0;
+                text-align: center;
+            }
+
+            .logo span {
+                font-size: 24px;
+            }
+
+            .nav-link {
+                font-size: 0;
+                text-align: center;
+            }
+
+            .main {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+                padding: 18px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+            }
+
+            .search {
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NLP<span>Shield</span>
+        </div>
+
+        <div class="nav-title">Main</div>
+
+        <a href="/" class="nav-link">🏠 Home</a>
+        <a href="/analyze.html" class="nav-link">🔍 Analyze</a>
+        <a href="/dashboard.html" class="nav-link">📊 Dashboard</a>
+
+        <div class="nav-title">Data</div>
+
+        <a href="/history.html" class="nav-link active">🕒 History</a>
+        <a href="/knowledge.html" class="nav-link">📚 Knowledge Base</a>
+
+        <div class="nav-title">System</div>
+
+        <a href="/about.html" class="nav-link">ℹ️ About</a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="header">
+            <h1>Analysis History</h1>
+            <p>Review previously analyzed text and security results.</p>
+        </div>
+
+
+        <div class="toolbar">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search"
+                placeholder="Search analyzed text..."
+            >
+
+            <a href="/analyze.html" class="analyze-btn">
+                + New Analysis
+            </a>
+
+        </div>
+
+
+        <div class="table-card">
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Text</th>
+                            <th>Toxicity</th>
+                            <th>Threat</th>
+                            <th>Category</th>
+                            <th>Risk</th>
+                            <th>Confidence</th>
+                            <th>Date</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="historyBody">
+
+                        <tr>
+                            <td colspan="8" class="empty">
+                                Loading history...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+let historyData = [];
+
+
+async function loadHistory() {
+
+    try {
+
+        const response =
+            await fetch("/api/history?limit=100");
+
+        if (!response.ok) {
+            throw new Error("History API failed");
+        }
+
+        const data =
+            await response.json();
+
+        historyData =
+            data.items ||
+            data.history ||
+            data ||
+            [];
+
+        renderHistory(historyData);
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("historyBody").innerHTML = `
+            <tr>
+                <td colspan="8" class="empty">
+                    Unable to load analysis history.
+                </td>
+            </tr>
+        `;
+    }
+}
+
+
+function renderHistory(items) {
+
+    const body =
+        document.getElementById("historyBody");
+
+    if (!Array.isArray(items) || items.length === 0) {
+
+        body.innerHTML = `
+            <tr>
+                <td colspan="8" class="empty">
+                    No analysis history found.
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    body.innerHTML = items.map(item => {
+
+        let result =
+            item.result ||
+            item.result_json ||
+            {};
+
+        if (typeof result === "string") {
+
+            try {
+                result = JSON.parse(result);
+            } catch {
+                result = {};
+            }
+
+        }
+
+
+        const toxicity =
+            result.toxicity || {};
+
+        const threat =
+            result.threat || {};
+
+        const risk =
+            result.risk || "LOW";
+
+        const text =
+            item.text ||
+            result.text ||
+            "-";
+
+        const confidence =
+            threat.confidence ??
+            toxicity.confidence ??
+            0;
+
+        const date =
+            item.created_at ||
+            item.date ||
+            "-";
+
+
+        return `
+
+            <tr>
+
+                <td>#${escapeHtml(item.id ?? "-")}</td>
+
+                <td class="text-cell"
+                    title="${escapeHtml(text)}">
+                    ${escapeHtml(text)}
+                </td>
+
+                <td>
+                    <span class="${toxicity.toxic ? "danger" : "safe"}">
+                        ${toxicity.toxic ? "Toxic" : "Normal"}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="${threat.threat ? "danger" : "safe"}">
+                        ${threat.threat ? "Detected" : "Safe"}
+                    </span>
+                </td>
+
+                <td>
+                    ${escapeHtml(threat.category || "Normal")}
+                </td>
+
+                <td>
+                    <span class="badge ${risk.toLowerCase()}">
+                        ${escapeHtml(risk)}
+                    </span>
+                </td>
+
+                <td>
+                    ${(Number(confidence) * 100).toFixed(1)}%
+                </td>
+
+                <td>
+                    ${escapeHtml(formatDate(date))}
+                </td>
+
+            </tr>
+        `;
+
+    }).join("");
+}
+
+
+function formatDate(value) {
+
+    if (!value || value === "-") {
+        return "-";
+    }
+
+    const date =
+        new Date(value);
+
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
+    return date.toLocaleString();
+}
+
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+document
+    .getElementById("searchInput")
+    .addEventListener("input", function () {
+
+        const query =
+            this.value.toLowerCase().trim();
+
+        if (!query) {
+
+            renderHistory(historyData);
+
+            return;
+        }
+
+        const filtered =
+            historyData.filter(item =>
+                String(item.text || "")
+                    .toLowerCase()
+                    .includes(query)
+            );
+
+        renderHistory(filtered);
+
+    });
+
+
+loadHistory();
+
+</script>
+
+</body>
+</html>

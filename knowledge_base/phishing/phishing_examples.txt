@@ -1,0 +1,1 @@
+﻿Common phishing examples include fake account verification, fake refunds, prize notifications, urgent login requests, and messages asking users to click unfamiliar links.

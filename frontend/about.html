@@ -1,0 +1,827 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NLPShield | About</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+<style>
+
+body {
+    margin: 0;
+    background: #080b12;
+    color: #f4f7fb;
+    font-family: Arial, sans-serif;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: #0d111a;
+    border-right: 1px solid #202938;
+    padding: 24px 16px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.logo span {
+    color: #00e5ff;
+}
+
+.nav-title {
+    color: #687386;
+    font-size: 11px;
+    margin: 20px 12px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-link {
+    display: block;
+    padding: 12px 14px;
+    margin: 5px 0;
+    border-radius: 10px;
+    color: #aeb8c8;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #13202d;
+    color: #00e5ff;
+}
+
+/* MAIN */
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #101a26,
+        #0d111a
+    );
+
+    border: 1px solid #202938;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin: 0 0 12px;
+}
+
+.hero h1 span {
+    color: #00e5ff;
+}
+
+.hero p {
+    color: #9ba6b7;
+    max-width: 850px;
+    line-height: 1.7;
+}
+
+.version {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #122c33;
+    color: #00e5ff;
+    font-size: 12px;
+}
+
+/* SECTION */
+
+.section {
+    background: #10151f;
+    border: 1px solid #202938;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 25px;
+}
+
+.section h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.section-description {
+    color: #7f8a9d;
+    line-height: 1.6;
+}
+
+/* ARCHITECTURE */
+
+.architecture {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.arch-card {
+    position: relative;
+    background: #0d111a;
+    border: 1px solid #263142;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+}
+
+.arch-card:hover {
+    border-color: #00e5ff;
+}
+
+.arch-icon {
+    font-size: 30px;
+}
+
+.arch-card h3 {
+    font-size: 15px;
+    margin: 12px 0 8px;
+}
+
+.arch-card p {
+    color: #7f8a9d;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00e5ff;
+    font-size: 25px;
+}
+
+/* PIPELINE */
+
+.pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.pipeline-step {
+    min-width: 160px;
+    background: #0d111a;
+    border: 1px solid #263142;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+}
+
+.pipeline-step strong {
+    display: block;
+    color: #00e5ff;
+    margin-bottom: 8px;
+}
+
+.pipeline-step span {
+    color: #8d98aa;
+    font-size: 12px;
+}
+
+.pipeline-arrow {
+    display: flex;
+    align-items: center;
+    color: #00e5ff;
+}
+
+/* TECH STACK */
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.tech {
+    padding: 18px;
+    border-radius: 12px;
+    background: #0d111a;
+    border: 1px solid #202938;
+}
+
+.tech strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.tech span {
+    color: #7f8a9d;
+    font-size: 12px;
+}
+
+/* FEATURES */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.feature {
+    background: #0d111a;
+    border: 1px solid #202938;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.feature-icon {
+    font-size: 25px;
+}
+
+.feature h3 {
+    margin: 12px 0 8px;
+}
+
+.feature p {
+    color: #7f8a9d;
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+/* BUTTON */
+
+.action {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #00e5ff;
+    color: #061018;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+@media(max-width: 1000px) {
+
+    .architecture {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media(max-width: 700px) {
+
+    .sidebar {
+        width: 70px;
+        padding: 20px 8px;
+    }
+
+    .logo {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .logo span {
+        font-size: 24px;
+    }
+
+    .nav-link {
+        font-size: 0;
+        text-align: center;
+    }
+
+    .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+        padding: 18px;
+    }
+
+    .hero {
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .architecture,
+    .tech-grid,
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+<aside class="sidebar">
+
+    <div class="logo">
+        NLP<span>Shield</span>
+    </div>
+
+    <div class="nav-title">Main</div>
+
+    <a href="/" class="nav-link">🏠 Home</a>
+
+    <a href="/analyze.html" class="nav-link">
+        🔍 Analyze
+    </a>
+
+    <a href="/dashboard.html" class="nav-link">
+        📊 Dashboard
+    </a>
+
+
+    <div class="nav-title">Data</div>
+
+    <a href="/history.html" class="nav-link">
+        🕒 History
+    </a>
+
+    <a href="/knowledge.html" class="nav-link">
+        📚 Knowledge Base
+    </a>
+
+
+    <div class="nav-title">System</div>
+
+    <a href="/about.html" class="nav-link active">
+        ℹ️ About
+    </a>
+
+</aside>
+
+
+<main class="main">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        About <span>NLPShield</span>
+    </h1>
+
+    <p>
+        NLPShield is an AI-powered text analysis platform designed
+        to identify toxic content and potential cybersecurity
+        threats in text. It combines Natural Language Processing,
+        Machine Learning, Retrieval-Augmented Generation and
+        cybersecurity knowledge to produce an interpretable
+        security analysis.
+    </p>
+
+    <span class="version">
+        NLPShield v1.0
+    </span>
+
+</section>
+
+
+<!-- SYSTEM ARCHITECTURE -->
+
+<section class="section">
+
+    <h2>System Architecture</h2>
+
+    <p class="section-description">
+        The system processes submitted text through multiple
+        analysis layers before generating the final risk result.
+    </p>
+
+
+    <div class="architecture">
+
+        <div class="arch-card">
+
+            <div class="arch-icon">👤</div>
+
+            <h3>User Input</h3>
+
+            <p>
+                User submits a message, email, URL-related text
+                or other textual content.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">→</div>
+
+
+        <div class="arch-card">
+
+            <div class="arch-icon">🧹</div>
+
+            <h3>NLP Preprocessing</h3>
+
+            <p>
+                Text is normalized and cleaned before machine
+                learning analysis.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">→</div>
+
+
+        <div class="arch-card">
+
+            <div class="arch-icon">🤖</div>
+
+            <h3>ML Analysis</h3>
+
+            <p>
+                Toxicity and cyber-threat models analyze
+                the processed text.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="architecture">
+
+        <div class="arch-card">
+
+            <div class="arch-icon">📚</div>
+
+            <h3>RAG Retrieval</h3>
+
+            <p>
+                Relevant cybersecurity knowledge is retrieved
+                from the local knowledge base.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">→</div>
+
+
+        <div class="arch-card">
+
+            <div class="arch-icon">🧠</div>
+
+            <h3>AI Explanation</h3>
+
+            <p>
+                The system generates an understandable
+                explanation of the detected result.
+            </p>
+
+        </div>
+
+
+        <div class="arrow">→</div>
+
+
+        <div class="arch-card">
+
+            <div class="arch-icon">🛡️</div>
+
+            <h3>Risk Result</h3>
+
+            <p>
+                Final toxicity, threat, category, confidence
+                and risk information is displayed.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PIPELINE -->
+
+<section class="section">
+
+    <h2>Analysis Pipeline</h2>
+
+    <p class="section-description">
+        NLPShield follows the following processing pipeline.
+    </p>
+
+
+    <div class="pipeline">
+
+        <div class="pipeline-step">
+
+            <strong>01</strong>
+
+            <span>
+                Text Input
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>02</strong>
+
+            <span>
+                Text Cleaning
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>03</strong>
+
+            <span>
+                TF-IDF Features
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>04</strong>
+
+            <span>
+                Toxicity Model
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>05</strong>
+
+            <span>
+                Threat Model
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>06</strong>
+
+            <span>
+                RAG Retrieval
+            </span>
+
+        </div>
+
+
+        <div class="pipeline-arrow">→</div>
+
+
+        <div class="pipeline-step">
+
+            <strong>07</strong>
+
+            <span>
+                Risk + Explanation
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECH STACK -->
+
+<section class="section">
+
+    <h2>Technology Stack</h2>
+
+    <div class="tech-grid">
+
+        <div class="tech">
+            <strong>🐍 Python</strong>
+            <span>Core development</span>
+        </div>
+
+        <div class="tech">
+            <strong>⚡ FastAPI</strong>
+            <span>Backend REST API</span>
+        </div>
+
+        <div class="tech">
+            <strong>🧠 Scikit-learn</strong>
+            <span>Machine learning models</span>
+        </div>
+
+        <div class="tech">
+            <strong>🔤 NLP</strong>
+            <span>Text preprocessing</span>
+        </div>
+
+        <div class="tech">
+            <strong>📊 TF-IDF</strong>
+            <span>Text feature extraction</span>
+        </div>
+
+        <div class="tech">
+            <strong>📚 RAG</strong>
+            <span>Knowledge retrieval</span>
+        </div>
+
+        <div class="tech">
+            <strong>🗃️ SQLite</strong>
+            <span>Analysis history</span>
+        </div>
+
+        <div class="tech">
+            <strong>🌐 HTML/CSS/JS</strong>
+            <span>Frontend interface</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section">
+
+    <h2>Core Features</h2>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">☣️</div>
+
+            <h3>Toxicity Detection</h3>
+
+            <p>
+                Detects potentially toxic or abusive text
+                using a trained classification model.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🚨</div>
+
+            <h3>Cyber Threat Detection</h3>
+
+            <p>
+                Identifies suspicious text associated with
+                phishing, scams, credential theft and malware.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📚</div>
+
+            <h3>RAG Knowledge</h3>
+
+            <p>
+                Retrieves relevant cybersecurity guidance
+                from the local knowledge base.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🧠</div>
+
+            <h3>AI Explanation</h3>
+
+            <p>
+                Provides a human-readable explanation
+                of the analysis result.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📈</div>
+
+            <h3>Confidence Score</h3>
+
+            <p>
+                Displays model confidence to help interpret
+                classification results.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🗄️</div>
+
+            <h3>Analysis History</h3>
+
+            <p>
+                Stores previous analysis results in the
+                local SQLite database.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="section">
+
+    <h2>Try NLPShield</h2>
+
+    <p class="section-description">
+        Submit text and inspect its toxicity, cyber-threat
+        classification, confidence, risk and retrieved
+        security knowledge.
+    </p>
+
+    <a href="/analyze.html" class="action">
+        Start Text Analysis →
+    </a>
+
+</section>
+
+
+</main>
+
+</div>
+
+</body>
+
+</html>

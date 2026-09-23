@@ -1,0 +1,1 @@
+﻿Social engineering attempts often use urgency, fear, authority, rewards, or trust to manipulate a user into revealing information or taking an unsafe action.

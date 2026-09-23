@@ -1,0 +1,630 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NLPShield | Security Dashboard</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #080b12;
+            color: #f4f7fb;
+            font-family: Arial, sans-serif;
+        }
+
+        .dashboard-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #0d111a;
+            border-right: 1px solid #202938;
+            padding: 24px 16px;
+            box-sizing: border-box;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #00e5ff;
+        }
+
+        .nav-title {
+            color: #687386;
+            font-size: 11px;
+            text-transform: uppercase;
+            margin: 20px 12px 10px;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px 14px;
+            margin: 5px 0;
+            border-radius: 10px;
+            color: #aeb8c8;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #13202d;
+            color: #00e5ff;
+        }
+
+        .main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .topbar h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .topbar p {
+            color: #7f8a9d;
+            margin-top: 7px;
+        }
+
+        .status {
+            padding: 10px 15px;
+            border: 1px solid #214b52;
+            border-radius: 20px;
+            color: #53e6b0;
+            background: #0d211e;
+            font-size: 13px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #10151f;
+            border: 1px solid #202938;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .stat-card .icon {
+            font-size: 24px;
+        }
+
+        .stat-title {
+            color: #8994a7;
+            margin-top: 18px;
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: 800;
+            margin-top: 6px;
+        }
+
+        .cyan {
+            color: #00e5ff;
+        }
+
+        .red {
+            color: #ff667d;
+        }
+
+        .yellow {
+            color: #ffc857;
+        }
+
+        .green {
+            color: #53e6b0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: #10151f;
+            border: 1px solid #202938;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .panel h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .panel-subtitle {
+            color: #778297;
+            font-size: 13px;
+        }
+
+        .bar-item {
+            margin: 22px 0;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .bar {
+            height: 9px;
+            background: #202938;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: #00e5ff;
+        }
+
+        .recent {
+            margin-top: 20px;
+        }
+
+        .recent-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #202938;
+            padding: 15px 0;
+            gap: 20px;
+        }
+
+        .recent-text {
+            color: #c6ceda;
+            font-size: 14px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .badge-high {
+            background: #35151d;
+            color: #ff667d;
+        }
+
+        .badge-medium {
+            background: #352c14;
+            color: #ffc857;
+        }
+
+        .badge-low {
+            background: #123229;
+            color: #53e6b0;
+        }
+
+        .quick-action {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 18px;
+            background: #00e5ff;
+            color: #061018;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media(max-width: 1000px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 700px) {
+            .sidebar {
+                width: 70px;
+                padding: 20px 8px;
+            }
+
+            .logo {
+                font-size: 0;
+                text-align: center;
+            }
+
+            .logo span {
+                font-size: 24px;
+            }
+
+            .nav-link {
+                font-size: 0;
+                text-align: center;
+            }
+
+            .main {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            NLP<span>Shield</span>
+        </div>
+
+        <div class="nav-title">Main</div>
+
+        <a href="/" class="nav-link">🏠 Home</a>
+        <a href="/analyze.html" class="nav-link">🔍 Analyze</a>
+        <a href="/dashboard.html" class="nav-link active">📊 Dashboard</a>
+
+        <div class="nav-title">Data</div>
+
+        <a href="/history.html" class="nav-link">🕒 History</a>
+        <a href="/knowledge.html" class="nav-link">📚 Knowledge Base</a>
+
+        <div class="nav-title">System</div>
+
+        <a href="/about.html" class="nav-link">ℹ️ About</a>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Security Dashboard</h1>
+                <p>Monitor NLPShield threat and toxicity analysis activity.</p>
+            </div>
+
+            <div class="status">
+                ● System Online
+            </div>
+
+        </div>
+
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="icon">🔎</div>
+                <div class="stat-title">Total Analyses</div>
+                <div class="stat-value cyan" id="totalAnalyses">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">🚨</div>
+                <div class="stat-title">Threats Detected</div>
+                <div class="stat-value red" id="threatCount">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">☣️</div>
+                <div class="stat-title">Toxic Messages</div>
+                <div class="stat-value yellow" id="toxicCount">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">🛡️</div>
+                <div class="stat-title">Safe Messages</div>
+                <div class="stat-value green" id="safeCount">0</div>
+            </div>
+
+        </section>
+
+
+        <section class="grid">
+
+            <div class="panel">
+
+                <h2>Threat Distribution</h2>
+                <div class="panel-subtitle">
+                    Categories detected by NLPShield
+                </div>
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Phishing</span>
+                        <span id="phishingCount">0</span>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-fill" id="phishingBar" style="width:0%"></div>
+                    </div>
+                </div>
+
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Scam</span>
+                        <span id="scamCount">0</span>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-fill" id="scamBar" style="width:0%"></div>
+                    </div>
+                </div>
+
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Credential Theft</span>
+                        <span id="credentialCount">0</span>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-fill" id="credentialBar" style="width:0%"></div>
+                    </div>
+                </div>
+
+
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>Malware</span>
+                        <span id="malwareCount">0</span>
+                    </div>
+
+                    <div class="bar">
+                        <div class="bar-fill" id="malwareBar" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <a href="/analyze.html" class="quick-action">
+                    + New Analysis
+                </a>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h2>Recent Analyses</h2>
+
+                <div class="panel-subtitle">
+                    Latest text analysis activity
+                </div>
+
+                <div class="recent" id="recentAnalyses">
+
+                    <p class="panel-subtitle">
+                        Loading analysis history...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+async function loadDashboard() {
+
+    try {
+
+        const response = await fetch("/api/dashboard");
+
+        if (!response.ok) {
+            throw new Error("Dashboard API failed");
+        }
+
+        const data = await response.json();
+
+        document.getElementById("totalAnalyses").textContent =
+            data.total_analyses ?? 0;
+
+        document.getElementById("threatCount").textContent =
+            data.threats_detected ?? 0;
+
+        document.getElementById("toxicCount").textContent =
+            data.toxic_messages ?? 0;
+
+        const total = data.total_analyses ?? 0;
+
+        const threats = data.threats_detected ?? 0;
+        const toxic = data.toxic_messages ?? 0;
+
+        document.getElementById("safeCount").textContent =
+            Math.max(0, total - threats - toxic);
+
+
+        const categories = data.categories || {};
+
+        updateCategory(
+            "phishing",
+            categories.phishing || categories.Phishing || 0
+        );
+
+        updateCategory(
+            "scam",
+            categories.scam || categories.Scam || 0
+        );
+
+        updateCategory(
+            "credential",
+            categories.credential_theft || categories["credential theft"] || 0
+        );
+
+        updateCategory(
+            "malware",
+            categories.malware || categories.Malware || 0
+        );
+
+
+        loadRecent();
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("recentAnalyses").innerHTML =
+            "<p class='panel-subtitle'>Unable to load dashboard data.</p>";
+    }
+}
+
+
+function updateCategory(name, count) {
+
+    const countElement =
+        document.getElementById(name + "Count");
+
+    const barElement =
+        document.getElementById(name + "Bar");
+
+    if (countElement) {
+        countElement.textContent = count;
+    }
+
+    const total =
+        Number(document.getElementById("totalAnalyses").textContent) || 1;
+
+    const percentage =
+        Math.min(100, (count / total) * 100);
+
+    if (barElement) {
+        barElement.style.width = percentage + "%";
+    }
+}
+
+
+async function loadRecent() {
+
+    try {
+
+        const response =
+            await fetch("/api/history?limit=6");
+
+        const data =
+            await response.json();
+
+        const container =
+            document.getElementById("recentAnalyses");
+
+        const items =
+            data.items || data.history || data || [];
+
+        if (!Array.isArray(items) || items.length === 0) {
+
+            container.innerHTML =
+                "<p class='panel-subtitle'>No analyses yet.</p>";
+
+            return;
+        }
+
+
+        container.innerHTML =
+            items.slice(0, 6).map(item => {
+
+                const result =
+                    item.result || item.result_json || {};
+
+                const risk =
+                    result.risk || "LOW";
+
+                const text =
+                    item.text || result.text || "Unknown text";
+
+                const safeText =
+                    text.length > 55
+                        ? text.substring(0, 55) + "..."
+                        : text;
+
+                const riskClass =
+                    risk.toLowerCase();
+
+                return `
+                    <div class="recent-item">
+
+                        <div class="recent-text">
+                            ${escapeHtml(safeText)}
+                        </div>
+
+                        <span class="badge badge-${riskClass}">
+                            ${escapeHtml(risk)}
+                        </span>
+
+                    </div>
+                `;
+
+            }).join("");
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+}
+
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+loadDashboard();
+
+</script>
+
+</body>
+</html>

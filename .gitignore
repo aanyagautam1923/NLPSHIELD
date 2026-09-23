@@ -1,0 +1,49 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+venv312/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated database
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+
+# Logs
+logs/*.log
+
+# Generated reports
+reports/generated/*
+reports/*.txt
+
+# Uploaded files
+uploads/documents/*
+uploads/images/*
+
+# Local vector store data
+vectorstore/*
+
+# Trained model binaries
+trained_models/*.joblib
+trained_models/*.pkl
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test/cache
+.pytest_cache/
+.coverage
+htmlcov/

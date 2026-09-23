@@ -1,0 +1,444 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NLPShield | Analyze Text</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/analyze.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        🛡️ NLP<span>Shield</span>
+    </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/analyze.html" class="active">Analyze</a>
+        <a href="/dashboard.html">Dashboard</a>
+        <a href="/history.html">History</a>
+        <a href="/knowledge.html">Knowledge</a>
+        <a href="/about.html">About</a>
+    </nav>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        AI System Online
+    </div>
+
+</header>
+
+
+<main class="analyze-page">
+
+    <section class="analyze-hero">
+
+        <div class="small-title">
+            NLP TEXT SECURITY ANALYZER
+        </div>
+
+        <h1>
+            Analyze Suspicious Text
+        </h1>
+
+        <p>
+            Detect toxicity, phishing, scams, credential theft,
+            malware and other suspicious cybersecurity patterns.
+        </p>
+
+    </section>
+
+
+    <section class="analyze-workspace">
+
+        <!-- INPUT -->
+
+        <div class="analyze-input-card">
+
+            <div class="card-heading">
+
+                <div>
+                    <span class="small-title">
+                        INPUT
+                    </span>
+
+                    <h2>
+                        Message to Analyze
+                    </h2>
+                </div>
+
+                <span class="input-status">
+                    MAX 5000 CHARACTERS
+                </span>
+
+            </div>
+
+
+            <textarea
+                id="analyzeInput"
+                maxlength="5000"
+                placeholder="Paste a suspicious message, email, social media text or any other content here..."
+            ></textarea>
+
+
+            <div class="input-footer">
+
+                <span id="analyzeCharCount">
+                    0 / 5000
+                </span>
+
+                <div class="actions">
+
+                    <button
+                        id="analyzeClearBtn"
+                        class="secondary-btn"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        id="analyzeRunBtn"
+                        class="primary-btn"
+                    >
+                        🔍 Analyze Text
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div
+            class="analysis-output-card"
+            id="analysisOutput"
+        >
+
+            <div class="output-header">
+
+                <div>
+                    <span class="small-title">
+                        AI ANALYSIS
+                    </span>
+
+                    <h2 id="analysisTitle">
+                        Waiting for Input
+                    </h2>
+                </div>
+
+                <span
+                    id="analysisRiskBadge"
+                    class="risk-badge neutral"
+                >
+                    WAITING
+                </span>
+
+            </div>
+
+
+            <!-- MAIN RESULT GRID -->
+
+            <div class="analysis-result-grid">
+
+                <div class="analysis-result-item">
+
+                    <span class="result-icon">
+                        ☣️
+                    </span>
+
+                    <span>
+                        Toxicity
+                    </span>
+
+                    <strong id="analysisToxicity">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-result-item">
+
+                    <span class="result-icon">
+                        ⚠️
+                    </span>
+
+                    <span>
+                        Cyber Threat
+                    </span>
+
+                    <strong id="analysisThreat">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-result-item">
+
+                    <span class="result-icon">
+                        🎯
+                    </span>
+
+                    <span>
+                        Confidence
+                    </span>
+
+                    <strong id="analysisConfidence">
+                        —
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-result-item">
+
+                    <span class="result-icon">
+                        🏷️
+                    </span>
+
+                    <span>
+                        Category
+                    </span>
+
+                    <strong id="analysisCategory">
+                        —
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIDENCE -->
+
+            <div class="analysis-confidence">
+
+                <div class="confidence-heading">
+                    <span>Toxicity Confidence</span>
+                    <strong id="analysisToxicityConfidence">
+                        0%
+                    </strong>
+                </div>
+
+                <div class="progress">
+                    <div
+                        id="analysisToxicityBar"
+                        class="progress-bar"
+                    ></div>
+                </div>
+
+
+                <div class="confidence-heading">
+                    <span>Threat Confidence</span>
+                    <strong id="analysisThreatConfidence">
+                        0%
+                    </strong>
+                </div>
+
+                <div class="progress">
+                    <div
+                        id="analysisThreatBar"
+                        class="progress-bar"
+                    ></div>
+                </div>
+
+            </div>
+
+
+            <!-- RISK -->
+
+            <div class="analysis-risk-box">
+
+                <div>
+
+                    <span>
+                        Overall Risk
+                    </span>
+
+                    <strong id="analysisRisk">
+                        WAITING
+                    </strong>
+
+                </div>
+
+                <div
+                    id="analysisRiskCircle"
+                    class="risk-circle"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <!-- EXPLANATION -->
+
+            <div class="analysis-explanation">
+
+                <h3>
+                    🤖 AI Explanation
+                </h3>
+
+                <p id="analysisExplanation">
+                    Enter a message above to receive
+                    an NLPShield security analysis.
+                </p>
+
+            </div>
+
+
+            <!-- RAG -->
+
+            <div class="analysis-rag">
+
+                <div class="rag-heading">
+
+                    <h3>
+                        📚 Security Knowledge
+                    </h3>
+
+                    <span>
+                        RAG
+                    </span>
+
+                </div>
+
+                <div id="analysisRagSources">
+
+                    <p class="muted">
+                        No security knowledge retrieved yet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUICK EXAMPLES -->
+
+    <section class="examples-section">
+
+        <div class="section-heading">
+
+            <span class="small-title">
+                TRY A SAMPLE
+            </span>
+
+            <h2>
+                Security Test Examples
+            </h2>
+
+            <p>
+                Click an example to load it into the analyzer.
+            </p>
+
+        </div>
+
+
+        <div class="example-grid">
+
+            <button
+                class="example-card"
+                data-example="URGENT! Your bank account will be suspended. Click this link and verify your password immediately."
+            >
+                <span>🎣</span>
+
+                <strong>
+                    Phishing Message
+                </strong>
+
+                <small>
+                    Suspicious account verification
+                </small>
+            </button>
+
+
+            <button
+                class="example-card"
+                data-example="Send me your username, password and OTP to verify your account."
+            >
+                <span>🔐</span>
+
+                <strong>
+                    Credential Theft
+                </strong>
+
+                <small>
+                    Password and OTP request
+                </small>
+            </button>
+
+
+            <button
+                class="example-card"
+                data-example="Download this unknown executable file and disable your antivirus before running it."
+            >
+                <span>🦠</span>
+
+                <strong>
+                    Malware
+                </strong>
+
+                <small>
+                    Suspicious executable
+                </small>
+            </button>
+
+
+            <button
+                class="example-card"
+                data-example="You are stupid and completely useless."
+            >
+                <span>☣️</span>
+
+                <strong>
+                    Toxic Content
+                </strong>
+
+                <small>
+                    Abusive language
+                </small>
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="logo">
+        🛡️ NLP<span>Shield</span>
+    </div>
+
+    <p>
+        AI/NLP Cyber Threat & Toxicity Analyzer
+    </p>
+
+    <span>
+        © 2026 NLPShield
+    </span>
+
+</footer>
+
+
+<script src="/js/analyze.js"></script>
+
+</body>
+</html>
