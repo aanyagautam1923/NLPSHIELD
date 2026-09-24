@@ -7,3 +7,5 @@ joblib
 requests
 python-multipart
 pydantic
+
+streamlit

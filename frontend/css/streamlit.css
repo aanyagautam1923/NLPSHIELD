@@ -1,0 +1,189 @@
+﻿/* NLPShield Professional UI */
+
+[data-testid="stAppViewContainer"] {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(0, 180, 255, 0.08), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(120, 80, 255, 0.08), transparent 28%),
+        #080b12;
+}
+
+[data-testid="stHeader"] {
+    background: transparent;
+}
+
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0b101a 0%, #080b12 100%);
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+[data-testid="stSidebar"] h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.block-container {
+    max-width: 1400px;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+h1 {
+    font-weight: 800 !important;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-weight: 750 !important;
+}
+
+h3 {
+    font-weight: 700 !important;
+}
+
+/* Metric cards */
+
+[data-testid="stMetric"] {
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.065),
+        rgba(255,255,255,0.025)
+    );
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-3px);
+    border-color: rgba(80,180,255,0.35);
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 14px !important;
+    opacity: 0.75;
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 30px !important;
+    font-weight: 800 !important;
+}
+
+/* Buttons */
+
+.stButton > button {
+    border-radius: 12px;
+    border: 1px solid rgba(80,180,255,0.35);
+    background: linear-gradient(135deg, #1677ff, #6d4aff);
+    color: white;
+    font-weight: 700;
+    min-height: 45px;
+    box-shadow: 0 8px 25px rgba(50,100,255,0.20);
+    transition: all 0.2s ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(50,100,255,0.30);
+}
+
+/* Text area */
+
+textarea {
+    border-radius: 15px !important;
+}
+
+/* Expanders */
+
+[data-testid="stExpander"] {
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.025);
+}
+
+/* Alerts */
+
+[data-testid="stAlert"] {
+    border-radius: 14px;
+}
+
+/* Dividers */
+
+hr {
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Sidebar radio */
+
+[data-testid="stSidebar"] [role="radiogroup"] label {
+    padding: 8px 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+[data-testid="stSidebar"] [role="radiogroup"] label:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+/* Tables */
+
+[data-testid="stDataFrame"] {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* Custom hero */
+
+.nlpshield-hero {
+    padding: 28px 30px;
+    border-radius: 22px;
+    margin-bottom: 25px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,120,255,0.18),
+            rgba(110,70,255,0.12)
+        );
+    border: 1px solid rgba(100,160,255,0.18);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.20);
+}
+
+.nlpshield-hero h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+.nlpshield-hero p {
+    margin: 8px 0 0;
+    opacity: 0.75;
+    font-size: 16px;
+}
+
+.status-pill {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(0,210,120,0.12);
+    border: 1px solid rgba(0,210,120,0.25);
+    color: #62e6a5;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.section-card {
+    padding: 20px;
+    border-radius: 17px;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 18px;
+}
+
+.footer-text {
+    text-align: center;
+    opacity: 0.45;
+    padding: 25px;
+    font-size: 13px;
+}
+
